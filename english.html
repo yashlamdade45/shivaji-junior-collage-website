@@ -1,94 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>12th English Question Bank</title>
+    <title>12th English Question Bank</title>
 
-<link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
-    margin:0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            min-height: 100vh;
+        }
 
-header{
-    background:#0b5ed7;
-    color:white;
-    text-align:center;
-    padding:30px 20px;
-}
+        header {
+            background: #0b5ed7;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
 
-.container{
-    width:90%;
-    max-width:900px;
-    margin:30px auto;
-}
+        header h1 {
+            margin-bottom: 10px;
+        }
 
-.card{
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
-}
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
 
-.card h2{
-    margin:0;
-}
+        .card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
 
-.btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:#ff9800;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-}
+        .card h2 {
+            margin-bottom: 15px;
+        }
 
-.btn:hover{
-    background:#e68900;
-}
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #ff9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
 
-.back{
-    display:inline-block;
-    margin-top:20px;
-    text-decoration:none;
-    color:#0b5ed7;
-    font-weight:bold;
-}
-</style>
+        .btn:hover {
+            background: #e68900;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #0b5ed7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 26px;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+            .card h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<header>
-<h1>12th English Question Bank</h1>
-<p>Shri Chhatrapati Shivaji Junior College</p>
-</header>
+    <header>
+        <h1>12th English Question Bank</h1>
+        <p>Shri Chhatrapati Shivaji Junior College</p>
+    </header>
 
-<div class="container">
+    <main class="container">
 
-<div class="card">
-<h2>📄 English 2024 Board Paper</h2>
-<a href="pdfs/english.2024.pdf" class="btn" target="_blank">Open PDF</a>
-</div>
+        <div class="card">
+            <h2>📄 English 2024 Board Paper</h2>
 
-<div class="card">
-<h2>📄 English 2025 Board Paper</h2>
-<a href="pdfs/english.2025.pdf" class="btn" target="_blank">Open PDF</a>
-</div>
+            <a href="pdfs/english.2024.pdf"
+               class="btn"
+               target="_blank">
+                Open PDF
+            </a>
+        </div>
 
-<a href="science-questionbank.html" class="back">
-⬅ Back to Arts Subjects
-</a>
+        <div class="card">
+            <h2>📄 English 2025 Board Paper</h2>
 
-</div>
+            <a href="pdfs/english.2025.pdf"
+               class="btn"
+               target="_blank">
+                Open PDF
+            </a>
+        </div>
+
+        <a href="science-questionbank.html" class="back">
+            ⬅ Back to Science Subjects
+        </a>
+
+    </main>
 
 </body>
+
 </html>
