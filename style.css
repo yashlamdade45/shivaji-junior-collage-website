@@ -63,7 +63,7 @@ header{
 
 .hero{
     height:85vh;
-    background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("collage.jpg");
+    background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("https://yashlamdade45.github.io/shivaji-junior-collage-website/collage.jpg");
     background-size:cover;
     background-position:center;
     display:flex;
@@ -663,7 +663,7 @@ header{
     height:85vh;
     background:
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("collage.jpg");
+    url("https://yashlamdade45.github.io/shivaji-junior-collage-website/collage.jpg");
 
     background-size:cover;
     background-position:center;
