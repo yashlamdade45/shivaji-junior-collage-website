@@ -98,6 +98,46 @@ header p{
 .back:hover{
     background:#084298;
 }
+
+@media (max-width:600px){
+    header{
+        padding:22px 14px;
+    }
+
+    header h1{
+        font-size:29px;
+        line-height:1.2;
+    }
+
+    header p{
+        font-size:15px;
+    }
+
+    .gallery{
+        width:auto;
+        margin:22px 12px;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+    }
+
+    .gallery img{
+        height:145px;
+        border-radius:8px;
+    }
+
+    .close{
+        top:10px;
+        right:18px;
+        font-size:34px;
+    }
+
+    .back{
+        width:auto;
+        max-width:calc(100% - 24px);
+        margin:22px 12px 35px;
+        text-align:center;
+    }
+}
 </style>
 
 </head>

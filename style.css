@@ -588,6 +588,96 @@ header{
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
+
+@media (max-width: 600px) {
+    header {
+        padding: 14px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-text h1 {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    .logo-text p {
+        font-size: 14px;
+    }
+
+    .logo img {
+        width: 58px;
+        height: 58px;
+    }
+
+    .hero {
+        min-height: 72vh;
+        height: auto;
+        padding: 70px 18px;
+    }
+
+    .hero h2,
+    .about h2,
+    .courses h2,
+    .principal h2,
+    .news h2,
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .question-btn,
+    .gallery-btn,
+    .login-btn {
+        width: 100%;
+        max-width: 340px;
+        padding: 13px 16px;
+    }
+
+    .about,
+    .courses,
+    .principal,
+    .news,
+    .contact,
+    .map-section {
+        padding: 50px 5%;
+    }
+
+    .box,
+    .course-card,
+    .achievement-card {
+        width: 100%;
+    }
+
+    .principal-image img {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .contact-box {
+        padding: 22px 16px;
+    }
+
+    .contact-box p {
+        font-size: 16px;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .footer-links a {
+        margin: 0;
+    }
+}
 .login-btn{
     display:inline-block;
     margin-top:15px;

@@ -70,3 +70,43 @@ header h1 {
 .links a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 600px) {
+    header {
+        padding: 22px 14px;
+    }
+
+    header h1 {
+        font-size: 25px;
+        line-height: 1.2;
+    }
+
+    .container {
+        width: auto;
+        margin: 18px 12px;
+    }
+
+    .card {
+        padding: 18px 16px;
+        border-radius: 10px;
+    }
+
+    .card h2 {
+        font-size: 21px;
+    }
+
+    .card li {
+        margin-bottom: 10px;
+    }
+
+    .back {
+        display: block;
+        width: 100%;
+        padding: 13px 16px;
+        margin-bottom: 18px;
+        text-align: center;
+        background: #0b5ed7;
+        color: white;
+        border-radius: 8px;
+    }
+}
