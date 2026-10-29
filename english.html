@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="English study resources and original practice questions with self-check guidance.">
 
-    <title>12th English Question Bank</title>
+    <title>12th English Practice Bank</title>
 
     <style>
         * {
@@ -15,13 +16,14 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: #f4f7fb;
             min-height: 100vh;
+            line-height: 1.65;
         }
 
         header {
-            background: #0b5ed7;
+            background: linear-gradient(135deg, #0b3d91, #072d6b);
             color: white;
             text-align: center;
             padding: 30px 20px;
@@ -29,6 +31,9 @@
 
         header h1 {
             margin-bottom: 10px;
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
         }
 
         .container {
@@ -51,8 +56,9 @@
 
         .btn {
             display: inline-block;
+            min-height: 46px;
             padding: 12px 22px;
-            background: #ff9800;
+            background: #b45309;
             color: white;
             text-decoration: none;
             border-radius: 8px;
@@ -60,13 +66,13 @@
         }
 
         .btn:hover {
-            background: #e68900;
+            background: #8a3d08;
         }
 
         .back {
             display: inline-block;
             margin-top: 20px;
-            color: #0b5ed7;
+            color: #0b3d91;
             text-decoration: none;
             font-weight: bold;
         }
@@ -74,6 +80,33 @@
         .back:hover {
             text-decoration: underline;
         }
+
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .page-nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .question-list { padding-left: 1.5rem; }
+        .question-list > li { padding: 0.8rem 0.2rem; border-bottom: 1px solid #dfe7f3; }
+        .question-text { font-weight: bold; }
+        .answer-key { margin-top: 0.55rem; padding: 0.65rem; background: #f4f7fb; border-radius: 8px; }
+        .answer-key summary { color: #0b3d91; font-weight: bold; cursor: pointer; }
+        .answer-key p { margin: 0.55rem 0 0; line-height: 1.6; }
+        .practice-note { padding: 12px 16px; border-left: 5px solid #ff9800; background: #fff8e1; }
+
+        :focus-visible { outline: 3px solid #ffbf47; outline-offset: 3px; box-shadow: 0 0 0 2px #0b3d91; }
 
         @media (max-width: 600px) {
             header h1 {
@@ -93,36 +126,61 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to practice questions</a>
 
     <header>
         <h1>12th English Question Bank</h1>
-        <p>Shri Chhatrapati Shivaji Junior College</p>
+        <p>Available study resources and original practice</p>
+        <nav class="page-nav" aria-label="Question bank navigation">
+            <a href="index.html">Home</a>
+            <a href="question-bank.html">All streams</a>
+            <a href="science-questionbank.html">Science subjects</a>
+            <a href="arts-questionbank.html">Arts subjects</a>
+        </nav>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
 
         <div class="card">
-            <h2>📄 English 2024 Board Paper</h2>
+            <h2>English PDF resource · 2024</h2>
 
             <a href="english.2024.pdf"
                class="btn"
-               target="_blank">
+               target="_blank" rel="noopener">
                 Open PDF
             </a>
         </div>
 
         <div class="card">
-            <h2>📄 English 2025 Board Paper</h2>
+            <h2>English PDF resource · 2025</h2>
 
             <a href="english.2025.pdf"
                class="btn"
-               target="_blank">
+               target="_blank" rel="noopener">
                 Open PDF
             </a>
         </div>
 
+        <section class="card">
+            <h2>Original English Practice</h2>
+            <p class="practice-note"><strong>Study practice:</strong> These questions are original practice prompts, not official board questions. Open each answer to self-check.</p>
+            <ol class="question-list">
+                <li><div class="question-text">Choose the correct verb: “Each of the students ___ ready.” (is / are)</div><details class="answer-key"><summary>Check answer</summary><p><strong>is.</strong> “Each” is singular, so it takes a singular verb.</p></details></li>
+                <li><div class="question-text">Change to passive voice: “The students completed the project.”</div><details class="answer-key"><summary>Check answer</summary><p>“The project was completed by the students.” The object becomes the subject; keep the past tense.</p></details></li>
+                <li><div class="question-text">Change to reported speech: Riya said, “I am preparing for the test.”</div><details class="answer-key"><summary>Check answer</summary><p>Riya said that she was preparing for the test. Pronouns and tense change to fit the reporting context.</p></details></li>
+                <li><div class="question-text">Correct the sentence: “She do not understand the instruction.”</div><details class="answer-key"><summary>Check answer</summary><p>“She does not understand the instruction.” Use “does” with the third-person singular subject.</p></details></li>
+                <li><div class="question-text">Add punctuation: “when the bell rang the students left the classroom”</div><details class="answer-key"><summary>Check answer</summary><p>“When the bell rang, the students left the classroom.” Capitalise the opening word and place a comma after the introductory clause.</p></details></li>
+                <li><div class="question-text">Identify the figure of speech: “The moon was like a silver coin.”</div><details class="answer-key"><summary>Check answer</summary><p>Simile: it compares the moon with a silver coin using “like.”</p></details></li>
+                <li><div class="question-text">Write a short paragraph on one benefit of regular reading.</div><details class="answer-key"><summary>Model answer</summary><p>Regular reading helps learners meet new ideas and vocabulary. It can improve comprehension when they read carefully and reflect on a text. Choosing material of interest also makes reading easier to sustain.</p></details></li>
+                <li><div class="question-text">What are the essential parts of a formal letter to a school principal?</div><details class="answer-key"><summary>Check answer</summary><p>Include the sender's address and date, recipient's designation/address, a clear subject, respectful salutation, concise purpose and relevant details, polite closing, and the sender's name/signature. Match the exact format taught in class.</p></details></li>
+            </ol>
+        </section>
+
         <a href="science-questionbank.html" class="back">
-            ⬅ Back to Science Subjects
+            Back to Science subjects
+        </a>
+        <a href="arts-questionbank.html" class="back">
+            Back to Arts subjects
         </a>
 
     </main>

@@ -3,20 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maharashtra HSC Computer Science Practice Bank</title>
+    <meta name="description" content="Original HSC Computer Science practice questions with concise self-check answers.">
+    <title>HSC Computer Science Practice Bank</title>
     <link rel="stylesheet" href="arts-subject.css">
 </head>
 <body>
-<header><h1>HSC Science - Computer Science / IT</h1><p>Board-style practice material</p></header>
-<main class="container">
-    <section class="card"><h2>Previous Board Topics</h2>
-        <p>Important topics covered in earlier board examinations.</p>
-        <ul class="links">
-        </ul>
-    </section>
+<a class="skip-link" href="#main-content">Skip to questions</a>
+<header>
+    <h1>HSC Science - Computer Science / IT</h1>
+    <p>Original practice and self-check answers</p>
+    <nav class="page-nav" aria-label="Question bank navigation">
+        <a href="index.html">Home</a><a href="question-bank.html">All streams</a>
+        <a href="science-questionbank.html">Science subjects</a><a href="arts-questionbank.html">Arts subjects</a>
+    </nav>
+</header>
+<main class="container" id="main-content">
     <section class="card"><h2>Practice Question Bank</h2>
-        <p class="practice-note"><strong>For study practice:</strong> Use these questions to prepare for the board examination.</p>
-        <ol><li>Compare arrays and linked lists for storing a sequence of values.</li><li>Explain the purpose of primary keys and relationships in a database.</li><li>Write an algorithm to search for the largest value in an array.</li><li>Describe two good practices for protecting personal data online.</li><li>Explain how a client and server communicate over a network.</li></ol>
+        <p class="practice-note"><strong>Study practice:</strong> These original revision questions are not official board questions. Open each answer to self-check and trace the algorithms by hand.</p>
+        <ol class="question-list">
+            <li><div class="question-text">Compare an array and a linked list for storing a sequence.</div><details class="answer-key"><summary>Check answer</summary><p>An array stores elements in indexed, usually contiguous locations and supports fast indexed access. A linked list stores nodes connected by links; insertion or deletion at a known node can be efficient, but accessing an element requires traversal.</p></details></li>
+            <li><div class="question-text">What are the roles of a primary key and a foreign key in a relational database?</div><details class="answer-key"><summary>Check answer</summary><p>A primary key uniquely identifies each row in its table. A foreign key refers to a key in another (or the same) table and helps maintain a valid relationship between records.</p></details></li>
+            <li><div class="question-text">Describe an algorithm to find the largest value in a non-empty array.</div><details class="answer-key"><summary>Check answer</summary><p>Set <code>largest</code> to the first element. Scan each remaining element; whenever a value exceeds <code>largest</code>, replace it. Return <code>largest</code>. This takes O(n) time and O(1) extra space.</p></details></li>
+            <li><div class="question-text">State two ways to protect personal data online.</div><details class="answer-key"><summary>Check answer</summary><p>Use unique strong passwords (preferably with a password manager) and enable multi-factor authentication. Also avoid sharing sensitive data on untrusted sites and keep software updated.</p></details></li>
+            <li><div class="question-text">How does a client-server request usually work?</div><details class="answer-key"><summary>Check answer</summary><p>A client sends a request over a network to a server. The server processes it and returns a response; the client then displays or uses that response.</p></details></li>
+            <li><div class="question-text">When can binary search be used, and what is its time complexity?</div><details class="answer-key"><summary>Check answer</summary><p>It requires data ordered by the search key. Each comparison halves the remaining search interval, so its time complexity is O(log n).</p></details></li>
+            <li><div class="question-text">Write an SQL query to show the names of students whose marks are at least 60 in a table named <code>Students</code>.</div><details class="answer-key"><summary>Check answer</summary><p><code>SELECT name FROM Students WHERE marks &gt;= 60;</code></p></details></li>
+            <li><div class="question-text">What is the difference between syntax and a logic error?</div><details class="answer-key"><summary>Check answer</summary><p>A syntax error violates the language's grammar and is usually caught before execution. A logic error allows the program to run but produces an incorrect result.</p></details></li>
+        </ol>
     </section>
     <a class="back" href="science-questionbank.html">Back to Science subjects</a>
 </main>

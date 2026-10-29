@@ -1,269 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Browse images from Shri Chhatrapati Shivaji Junior College campus and activities.">
-<title>College Gallery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse photographs in the Shri Chhatrapati Shivaji Junior College gallery.">
+    <meta name="theme-color" content="#0b3d91">
+    <title>College Gallery | Shri Chhatrapati Shivaji Junior College</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --primary: #0b3d91;
+            --primary-dark: #072d6b;
+            --surface: #fff;
+            --text: #1e2a37;
+            --muted: #4e5d73;
+            --border: #dfe7f3;
+            --shadow: 0 12px 26px rgba(11, 61, 145, 0.1);
+        }
 
-<style>
-:root {
-    --primary: #0b3d91;
-    --primary-soft: #edf4ff;
-    --surface: #ffffff;
-    --text: #1e2a37;
-    --muted: #54667d;
-    --border: #dfeaf7;
-    --shadow: 0 12px 26px rgba(11,61,145,0.08);
-}
+        * { box-sizing: border-box; }
 
-* { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--text);
+            background: #f4f7fb;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(180deg, var(--primary-soft), #f6f9ff);
-    color: var(--text);
-}
+        :focus-visible {
+            outline: 3px solid #ffbf47;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 2px var(--primary-dark);
+        }
 
-header {
-    background: linear-gradient(135deg, var(--primary), #0d2e73);
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-}
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            z-index: 10;
+            padding: 0.8rem 1rem;
+            color: var(--primary);
+            background: white;
+        }
 
-header h1 {
-    margin: 0;
-    font-size: clamp(2rem, 4vw, 3rem);
-}
+        .skip-link:focus { left: 1rem; }
 
-header p {
-    margin: 0.7rem 0 0;
-    opacity: 0.95;
-}
+        header {
+            padding: 2rem 1rem;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
 
-.gallery {
-    width: min(1200px, calc(100% - 2rem));
-    margin: 2.5rem auto 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
+        header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
 
-.gallery-item {
-    display: block;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    padding: 0;
-}
+        header p { margin: 0.7rem 0 0; }
 
-.gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.25s ease;
-}
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
 
-.gallery-item:hover img,
-.gallery-item:focus-visible img {
-    transform: scale(1.04);
-}
+        .page-nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: white;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
 
-.preview {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    padding: 1rem;
-}
+        main {
+            width: min(1200px, calc(100% - 2rem));
+            margin: 2rem auto;
+        }
 
-.preview.is-open { display: flex; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+            gap: 1rem;
+        }
 
-.preview-inner {
-    position: relative;
-    max-width: min(92vw, 900px);
-}
+        .gallery-item {
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            cursor: zoom-in;
+        }
 
-.preview img {
-    max-width: 100%;
-    max-height: 88vh;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            transition: transform 0.25s ease;
+        }
 
-.close {
-    position: absolute;
-    top: -2.6rem;
-    right: 0;
-    color: white;
-    font-size: 2.8rem;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    line-height: 1;
-}
+        .gallery-item:hover img,
+        .gallery-item:focus-visible img { transform: scale(1.04); }
 
-.back {
-    display: inline-flex;
-    margin: 1.5rem auto 3rem;
-    padding: 0.9rem 1.3rem;
-    background: var(--primary);
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    justify-content: center;
-    width: min(220px, calc(100% - 2rem));
-    transform: translateX(-50%);
-    left: 50%;
-    position: relative;
-}
+        .preview {
+            width: min(100% - 2rem, 1000px);
+            max-width: none;
+            max-height: min(92vh, 900px);
+            padding: 1rem;
+            overflow: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            color: white;
+            background: #101725;
+        }
 
-@media (max-width:600px){
-    .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-        width: min(100% - 1rem, 800px);
-    }
+        .preview::backdrop { background: rgba(0, 0, 0, 0.88); }
 
-    .gallery-item img {
-        height: 150px;
-    }
+        .preview-inner {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            grid-template-rows: auto minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    .back {
-        transform: none;
-        left: auto;
-        width: calc(100% - 1rem);
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-}
-</style>
+        .preview-heading {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
 
+        .preview-heading h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .preview button {
+            min-width: 44px;
+            min-height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            color: white;
+            background: #263248;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .preview .close { font-size: 1.6rem; }
+
+        .preview img {
+            display: block;
+            grid-column: 2;
+            width: 100%;
+            max-height: 72vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .preview-caption {
+            grid-column: 1 / -1;
+            margin: 0;
+            color: #e6edf7;
+            text-align: center;
+        }
+
+        .back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            min-height: 48px;
+            margin: 2rem auto;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            color: white;
+            background: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            main { width: calc(100% - 1rem); }
+            .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+            .preview { padding: 0.65rem; }
+            .preview-inner { gap: 0.4rem; }
+            .preview img { max-height: 68vh; }
+            .preview button { min-width: 40px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <a class="skip-link" href="#gallery">Skip to photos</a>
+    <header>
+        <h1>College Gallery</h1>
+        <p>Shri Chhatrapati Shivaji Junior College</p>
+        <nav class="page-nav" aria-label="Gallery navigation">
+            <a href="index.html">Home</a>
+            <a href="question-bank.html">Question Bank</a>
+        </nav>
+    </header>
 
-<header>
-<h1>College Gallery</h1>
-<p>Shri Chhatrapati Shivaji Junior College</p>
-</header>
+    <main>
+        <section class="gallery" id="gallery" aria-label="College photographs">
+            <button class="gallery-item" type="button" data-src="gallery1.jpeg" data-alt="College gallery photograph 1" aria-label="View college gallery photograph 1">
+                <img src="gallery1.jpeg" alt="College gallery photograph 1" loading="eager" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery2.jpeg" data-alt="College gallery photograph 2" aria-label="View college gallery photograph 2">
+                <img src="gallery2.jpeg" alt="College gallery photograph 2" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery3.jpeg" data-alt="College gallery photograph 3" aria-label="View college gallery photograph 3">
+                <img src="gallery3.jpeg" alt="College gallery photograph 3" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery4.jpeg" data-alt="College gallery photograph 4" aria-label="View college gallery photograph 4">
+                <img src="gallery4.jpeg" alt="College gallery photograph 4" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery5.jpeg" data-alt="College gallery photograph 5" aria-label="View college gallery photograph 5">
+                <img src="gallery5.jpeg" alt="College gallery photograph 5" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery6.jpeg" data-alt="College gallery photograph 6" aria-label="View college gallery photograph 6">
+                <img src="gallery6.jpeg" alt="College gallery photograph 6" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery7.jpeg" data-alt="College gallery photograph 7" aria-label="View college gallery photograph 7">
+                <img src="gallery7.jpeg" alt="College gallery photograph 7" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery8.jpeg" data-alt="College gallery photograph 8" aria-label="View college gallery photograph 8">
+                <img src="gallery8.jpeg" alt="College gallery photograph 8" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery9.jpeg" data-alt="College gallery photograph 9" aria-label="View college gallery photograph 9">
+                <img src="gallery9.jpeg" alt="College gallery photograph 9" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery10.jpeg" data-alt="College gallery photograph 10" aria-label="View college gallery photograph 10">
+                <img src="gallery10.jpeg" alt="College gallery photograph 10" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery11.jpeg" data-alt="College gallery photograph 11" aria-label="View college gallery photograph 11">
+                <img src="gallery11.jpeg" alt="College gallery photograph 11" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery12.jpeg" data-alt="College gallery photograph 12" aria-label="View college gallery photograph 12">
+                <img src="gallery12.jpeg" alt="College gallery photograph 12" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery13.jpeg" data-alt="College gallery photograph 13" aria-label="View college gallery photograph 13">
+                <img src="gallery13.jpeg" alt="College gallery photograph 13" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery14.jpeg" data-alt="College gallery photograph 14" aria-label="View college gallery photograph 14">
+                <img src="gallery14.jpeg" alt="College gallery photograph 14" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery15.jpeg" data-alt="College gallery photograph 15" aria-label="View college gallery photograph 15">
+                <img src="gallery15.jpeg" alt="College gallery photograph 15" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery16.jpeg" data-alt="College gallery photograph 16" aria-label="View college gallery photograph 16">
+                <img src="gallery16.jpeg" alt="College gallery photograph 16" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery17.jpeg" data-alt="College gallery photograph 17" aria-label="View college gallery photograph 17">
+                <img src="gallery17.jpeg" alt="College gallery photograph 17" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery18.jpeg" data-alt="College gallery photograph 18" aria-label="View college gallery photograph 18">
+                <img src="gallery18.jpeg" alt="College gallery photograph 18" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery19.jpeg" data-alt="College gallery photograph 19" aria-label="View college gallery photograph 19">
+                <img src="gallery19.jpeg" alt="College gallery photograph 19" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery20.jpeg" data-alt="College gallery photograph 20" aria-label="View college gallery photograph 20">
+                <img src="gallery20.jpeg" alt="College gallery photograph 20" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery21.jpeg" data-alt="College gallery photograph 21" aria-label="View college gallery photograph 21">
+                <img src="gallery21.jpeg" alt="College gallery photograph 21" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery22.jpeg" data-alt="College gallery photograph 22" aria-label="View college gallery photograph 22">
+                <img src="gallery22.jpeg" alt="College gallery photograph 22" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery23.jpeg" data-alt="College gallery photograph 23" aria-label="View college gallery photograph 23">
+                <img src="gallery23.jpeg" alt="College gallery photograph 23" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery24.jpeg" data-alt="College gallery photograph 24" aria-label="View college gallery photograph 24">
+                <img src="gallery24.jpeg" alt="College gallery photograph 24" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery25.jpeg" data-alt="College gallery photograph 25" aria-label="View college gallery photograph 25">
+                <img src="gallery25.jpeg" alt="College gallery photograph 25" loading="lazy" decoding="async">
+            </button>
+            <button class="gallery-item" type="button" data-src="gallery26.jpeg" data-alt="College gallery photograph 26" aria-label="View college gallery photograph 26">
+                <img src="gallery26.jpeg" alt="College gallery photograph 26" loading="lazy" decoding="async">
+            </button>
+        </section>
 
-<div class="gallery" aria-label="College photo gallery">
-    <button class="gallery-item" type="button" data-src="gallery1.jpeg" aria-label="View gallery image 1">
-        <img src="gallery1.jpeg" alt="College building and academic atmosphere">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery2.jpeg" aria-label="View gallery image 2">
-        <img src="gallery2.jpeg" alt="Students and campus environment">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery3.jpeg" aria-label="View gallery image 3">
-        <img src="gallery3.jpeg" alt="College grounds and academic area">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery4.jpeg" aria-label="View gallery image 4">
-        <img src="gallery4.jpeg" alt="Campus moment from the college">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery5.jpeg" aria-label="View gallery image 5">
-        <img src="gallery5.jpeg" alt="Academic and student life at college">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery6.jpeg" aria-label="View gallery image 6">
-        <img src="gallery6.jpeg" alt="College campus scene">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery7.jpeg" aria-label="View gallery image 7">
-        <img src="gallery7.jpeg" alt="Students in a shared educational setting">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery8.jpeg" aria-label="View gallery image 8">
-        <img src="gallery8.jpeg" alt="Academic environment and campus life">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery9.jpeg" aria-label="View gallery image 9">
-        <img src="gallery9.jpeg" alt="College activities and campus culture">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery10.jpeg" aria-label="View gallery image 10">
-        <img src="gallery10.jpeg" alt="Campus photo from the college gallery">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery11.jpeg" aria-label="View gallery image 11">
-        <img src="gallery11.jpeg" alt="College environment and student life">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery12.jpeg" aria-label="View gallery image 12">
-        <img src="gallery12.jpeg" alt="Campus learning environment">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery13.jpeg" aria-label="View gallery image 13">
-        <img src="gallery13.jpeg" alt="College campus and classroom setting">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery14.jpeg" aria-label="View gallery image 14">
-        <img src="gallery14.jpeg" alt="Campus events and student life">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery15.jpeg" aria-label="View gallery image 15">
-        <img src="gallery15.jpeg" alt="Academic campus photo">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery16.jpeg" aria-label="View gallery image 16">
-        <img src="gallery16.jpeg" alt="College moment from campus activity">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery17.jpeg" aria-label="View gallery image 17">
-        <img src="gallery17.jpeg" alt="Campus atmosphere and college surroundings">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery18.jpeg" aria-label="View gallery image 18">
-        <img src="gallery18.jpeg" alt="Learning environment at the college">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery19.jpeg" aria-label="View gallery image 19">
-        <img src="gallery19.jpeg" alt="College campus and student life image">
-    </button>
-    <button class="gallery-item" type="button" data-src="gallery20.jpeg" aria-label="View gallery image 20">
-        <img src="gallery20.jpeg" alt="College building and campus environment">
-    </button>
-</div>
+        <a href="index.html" class="back">Back to home</a>
+    </main>
 
-<div class="preview" id="preview" aria-hidden="true">
-    <div class="preview-inner">
-        <button type="button" class="close" aria-label="Close image preview">&times;</button>
-        <img id="previewImg" alt="Selected gallery preview">
-    </div>
-</div>
+    <dialog class="preview" id="preview" aria-labelledby="preview-title">
+        <div class="preview-inner">
+            <div class="preview-heading">
+                <h2 id="preview-title">College gallery photo</h2>
+                <button type="button" class="close" aria-label="Close image preview">&times;</button>
+            </div>
+            <button type="button" class="previous" aria-label="Previous photo">Previous</button>
+            <img id="previewImg" alt="">
+            <button type="button" class="next" aria-label="Next photo">Next</button>
+            <p class="preview-caption" id="previewCaption" aria-live="polite"></p>
+        </div>
+    </dialog>
 
-<a href="index.html" class="back">⬅ Back to Home</a>
-
-<script>
-const preview = document.getElementById('preview');
-const previewImg = document.getElementById('previewImg');
-const galleryItems = document.querySelectorAll('.gallery-item');
-const closeBtn = document.querySelector('.close');
-
-function openPreview(src) {
-    previewImg.src = src;
-    preview.classList.add('is-open');
-    preview.setAttribute('aria-hidden', 'false');
-}
-
-function closePreview() {
-    preview.classList.remove('is-open');
-    preview.setAttribute('aria-hidden', 'true');
-}
-
-galleryItems.forEach((item) => {
-    item.addEventListener('click', function () {
-        openPreview(item.dataset.src);
-    });
-});
-
-closeBtn.addEventListener('click', closePreview);
-preview.addEventListener('click', function (event) {
-    if (event.target === preview) closePreview();
-});
-
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && preview.classList.contains('is-open')) {
-        closePreview();
-    }
-});
-</script>
-
+    <script src="script.js" defer></script>
 </body>
 </html>
