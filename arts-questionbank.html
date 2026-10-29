@@ -10,7 +10,7 @@
 :root {
     --primary: #0b3d91;
     --primary-soft: #edf4ff;
-    --accent: #ff9800;
+    --accent: #b45309;
     --text: #1e2a37;
     --muted: #53657f;
     --surface: #ffffff;
@@ -21,10 +21,11 @@
 * { box-sizing: border-box; }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: linear-gradient(180deg, var(--primary-soft), #f8fbff);
     color: var(--text);
     margin: 0;
+    line-height: 1.65;
 }
 
 header {
@@ -37,6 +38,8 @@ header {
 header h1 {
     margin: 0;
     font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
 }
 
 header p {
@@ -64,6 +67,12 @@ header p {
     box-shadow: var(--shadow);
 }
 
+.search-wrap label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+}
+
 .subjects {
     width: 100%;
     display: grid;
@@ -80,10 +89,57 @@ header p {
     text-align: center;
 }
 
+.card[hidden] { display: none; }
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10;
+    padding: 0.8rem 1rem;
+    color: var(--primary);
+    background: white;
+}
+
+.skip-link:focus { left: 1rem; }
+
+.page-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.page-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: white;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.results-status {
+    min-height: 1.6em;
+    margin: -0.5rem 0 1rem;
+    color: var(--muted);
+    text-align: center;
+}
+
 .card h2 {
     margin: 0;
     color: var(--primary);
     font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .card p {
@@ -105,8 +161,8 @@ header p {
     transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.btn:hover, .btn:focus-visible {
-    background: #e68900;
+.btn:hover {
+    background: #8a3d08;
     transform: translateY(-1px);
 }
 
@@ -138,65 +194,72 @@ header p {
 
 <header>
 <h1>🎨 12th Arts Question Bank</h1>
-<p>Select a subject for board preparation material.</p>
+<p>Open a subject for original practice questions and self-check answers. Available PDF files are listed separately.</p>
+<nav class="page-nav" aria-label="Question bank navigation">
+    <a href="index.html">Home</a>
+    <a href="question-bank.html">All streams</a>
+    <a href="science-questionbank.html">Science subjects</a>
+</nav>
 </header>
 
+<a class="skip-link" href="#subject-list">Skip to subjects</a>
 <div class="page-shell">
     <div class="search-wrap">
-        <label for="subjectSearch" class="sr-only" style="position:absolute;left:-9999px;">Search arts subjects</label>
-        <input id="subjectSearch" type="search" placeholder="Search subject name..." aria-label="Search arts subjects">
+        <label for="subjectSearch">Search Arts subjects</label>
+        <input id="subjectSearch" type="search" placeholder="Try History, Economics, Hindi..." data-filter-input>
     </div>
+    <p class="results-status" data-filter-status role="status" aria-live="polite"></p>
 
-    <main class="subjects" aria-label="Arts subjects">
-        <article class="card" data-search="english language board exam question paper">
+    <main class="subjects" id="subject-list" aria-label="Arts subjects">
+        <article class="card" data-filter-card data-search="english language board exam question paper">
             <h2>English</h2>
             <p>Shared English support.</p>
             <a href="english.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="marathi language board exam question paper">
+        <article class="card" data-filter-card data-search="marathi language board exam question paper">
             <h2>Marathi</h2>
             <p>Marathi practice and study material.</p>
             <a href="marathi.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="hindi language board exam question paper">
+        <article class="card" data-filter-card data-search="hindi language board exam question paper">
             <h2>Hindi</h2>
             <p>Hindi practice and study material.</p>
             <a href="hindi.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="history arts board exam question paper">
+        <article class="card" data-filter-card data-search="history arts board exam question paper">
             <h2>History</h2>
             <p>Practice notes and revision support.</p>
             <a href="history.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="geography arts board exam question paper">
+        <article class="card" data-filter-card data-search="geography arts board exam question paper">
             <h2>Geography</h2>
             <p>Practice and revision material.</p>
             <a href="geography.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="political science arts board exam question paper">
+        <article class="card" data-filter-card data-search="political science arts board exam question paper">
             <h2>Political Science</h2>
             <p>Practice material and revision support.</p>
             <a href="political-science.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="sociology arts board exam question paper">
+        <article class="card" data-filter-card data-search="sociology arts board exam question paper">
             <h2>Sociology</h2>
             <p>Practice material and revision support.</p>
             <a href="sociology-arts.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="economics arts board exam question paper">
+        <article class="card" data-filter-card data-search="economics arts board exam question paper">
             <h2>Economics</h2>
             <p>Economics practice and revision material.</p>
             <a href="economics.html" class="btn">Open</a>
         </article>
 
-        <article class="card" data-search="psychology arts board exam question paper">
+        <article class="card" data-filter-card data-search="psychology arts board exam question paper">
             <h2>Psychology</h2>
             <p>Practice and revision support.</p>
             <a href="psychology.html" class="btn">Open</a>
@@ -209,17 +272,7 @@ header p {
     </div>
 </div>
 
-<script>
-const searchInput = document.getElementById('subjectSearch');
-const cards = Array.from(document.querySelectorAll('.card'));
-searchInput.addEventListener('input', function () {
-    const query = this.value.trim().toLowerCase();
-    cards.forEach((card) => {
-        const text = (card.dataset.search || card.textContent || '').toLowerCase();
-        card.style.display = (!query || text.includes(query)) ? '' : 'none';
-    });
-});
-</script>
+<script src="script.js" defer></script>
 
 </body>
 </html>
