@@ -3,139 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="Browse images from Shri Chhatrapati Shivaji Junior College campus and activities.">
 <title>College Gallery</title>
 
-<link rel="stylesheet" href="style.css">
-
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f7fb;
+:root {
+    --primary: #0b3d91;
+    --primary-soft: #edf4ff;
+    --surface: #ffffff;
+    --text: #1e2a37;
+    --muted: #54667d;
+    --border: #dfeaf7;
+    --shadow: 0 12px 26px rgba(11,61,145,0.08);
 }
 
-header{
-    background:#0b5ed7;
-    color:#fff;
-    text-align:center;
-    padding:30px;
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, var(--primary-soft), #f6f9ff);
+    color: var(--text);
 }
 
-header h1{
-    margin:0;
-    font-size:40px;
+header {
+    background: linear-gradient(135deg, var(--primary), #0d2e73);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
-header p{
-    margin-top:10px;
-    font-size:18px;
+header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
 }
 
-.gallery{
-    width:90%;
-    max-width:1200px;
-    margin:40px auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+header p {
+    margin: 0.7rem 0 0;
+    opacity: 0.95;
 }
 
-.gallery img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.3s;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
+.gallery {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 2.5rem auto 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
 }
 
-.gallery img:hover{
-    transform:scale(1.05);
+.gallery-item {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    padding: 0;
 }
 
-.preview{
-    position:fixed;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.9);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
 }
 
-.preview img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:10px;
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+    transform: scale(1.04);
 }
 
-.close{
-    position:absolute;
-    top:20px;
-    right:35px;
-    color:white;
-    font-size:40px;
-    cursor:pointer;
+.preview {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 1rem;
 }
 
-.back{
-    display:block;
-    width:max-content;
-    margin:30px auto 50px;
-    padding:12px 25px;
-    background:#0b5ed7;
-    color:#fff;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
+.preview.is-open { display: flex; }
+
+.preview-inner {
+    position: relative;
+    max-width: min(92vw, 900px);
 }
 
-.back:hover{
-    background:#084298;
+.preview img {
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.close {
+    position: absolute;
+    top: -2.6rem;
+    right: 0;
+    color: white;
+    font-size: 2.8rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    line-height: 1;
+}
+
+.back {
+    display: inline-flex;
+    margin: 1.5rem auto 3rem;
+    padding: 0.9rem 1.3rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    justify-content: center;
+    width: min(220px, calc(100% - 2rem));
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
 }
 
 @media (max-width:600px){
-    header{
-        padding:22px 14px;
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+        width: min(100% - 1rem, 800px);
     }
 
-    header h1{
-        font-size:29px;
-        line-height:1.2;
+    .gallery-item img {
+        height: 150px;
     }
 
-    header p{
-        font-size:15px;
-    }
-
-    .gallery{
-        width:auto;
-        margin:22px 12px;
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:10px;
-    }
-
-    .gallery img{
-        height:145px;
-        border-radius:8px;
-    }
-
-    .close{
-        top:10px;
-        right:18px;
-        font-size:34px;
-    }
-
-    .back{
-        width:auto;
-        max-width:calc(100% - 24px);
-        margin:22px 12px 35px;
-        text-align:center;
+    .back {
+        transform: none;
+        left: auto;
+        width: calc(100% - 1rem);
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
 }
 </style>
@@ -149,47 +158,111 @@ header p{
 <p>Shri Chhatrapati Shivaji Junior College</p>
 </header>
 
-<div class="gallery">
-
-<img src="gallery1.jpeg" onclick="show(this.src)">
-<img src="gallery2.jpeg" onclick="show(this.src)">
-<img src="gallery3.jpeg" onclick="show(this.src)">
-<img src="gallery4.jpeg" onclick="show(this.src)">
-<img src="gallery5.jpeg" onclick="show(this.src)">
-<img src="gallery6.jpeg" onclick="show(this.src)">
-<img src="gallery7.jpeg" onclick="show(this.src)">
-<img src="gallery8.jpeg" onclick="show(this.src)">
-<img src="gallery9.jpeg" onclick="show(this.src)">
-<img src="gallery10.jpeg" onclick="show(this.src)">
-<img src="gallery11.jpeg" onclick="show(this.src)">
-<img src="gallery12.jpeg" onclick="show(this.src)">
-<img src="gallery13.jpeg" onclick="show(this.src)">
-<img src="gallery14.jpeg" onclick="show(this.src)">
-<img src="gallery15.jpeg" onclick="show(this.src)">
-<img src="gallery16.jpeg" onclick="show(this.src)">
-<img src="gallery17.jpeg" onclick="show(this.src)">
-<img src="gallery18.jpeg" onclick="show(this.src)">
-<img src="gallery19.jpeg" onclick="show(this.src)">
-<img src="gallery20.jpeg" onclick="show(this.src)">
-
+<div class="gallery" aria-label="College photo gallery">
+    <button class="gallery-item" type="button" data-src="gallery1.jpeg" aria-label="View gallery image 1">
+        <img src="gallery1.jpeg" alt="College building and academic atmosphere">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery2.jpeg" aria-label="View gallery image 2">
+        <img src="gallery2.jpeg" alt="Students and campus environment">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery3.jpeg" aria-label="View gallery image 3">
+        <img src="gallery3.jpeg" alt="College grounds and academic area">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery4.jpeg" aria-label="View gallery image 4">
+        <img src="gallery4.jpeg" alt="Campus moment from the college">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery5.jpeg" aria-label="View gallery image 5">
+        <img src="gallery5.jpeg" alt="Academic and student life at college">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery6.jpeg" aria-label="View gallery image 6">
+        <img src="gallery6.jpeg" alt="College campus scene">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery7.jpeg" aria-label="View gallery image 7">
+        <img src="gallery7.jpeg" alt="Students in a shared educational setting">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery8.jpeg" aria-label="View gallery image 8">
+        <img src="gallery8.jpeg" alt="Academic environment and campus life">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery9.jpeg" aria-label="View gallery image 9">
+        <img src="gallery9.jpeg" alt="College activities and campus culture">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery10.jpeg" aria-label="View gallery image 10">
+        <img src="gallery10.jpeg" alt="Campus photo from the college gallery">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery11.jpeg" aria-label="View gallery image 11">
+        <img src="gallery11.jpeg" alt="College environment and student life">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery12.jpeg" aria-label="View gallery image 12">
+        <img src="gallery12.jpeg" alt="Campus learning environment">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery13.jpeg" aria-label="View gallery image 13">
+        <img src="gallery13.jpeg" alt="College campus and classroom setting">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery14.jpeg" aria-label="View gallery image 14">
+        <img src="gallery14.jpeg" alt="Campus events and student life">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery15.jpeg" aria-label="View gallery image 15">
+        <img src="gallery15.jpeg" alt="Academic campus photo">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery16.jpeg" aria-label="View gallery image 16">
+        <img src="gallery16.jpeg" alt="College moment from campus activity">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery17.jpeg" aria-label="View gallery image 17">
+        <img src="gallery17.jpeg" alt="Campus atmosphere and college surroundings">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery18.jpeg" aria-label="View gallery image 18">
+        <img src="gallery18.jpeg" alt="Learning environment at the college">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery19.jpeg" aria-label="View gallery image 19">
+        <img src="gallery19.jpeg" alt="College campus and student life image">
+    </button>
+    <button class="gallery-item" type="button" data-src="gallery20.jpeg" aria-label="View gallery image 20">
+        <img src="gallery20.jpeg" alt="College building and campus environment">
+    </button>
 </div>
 
-<div class="preview" id="preview">
-<span class="close" onclick="hide()">&times;</span>
-<img id="previewImg">
+<div class="preview" id="preview" aria-hidden="true">
+    <div class="preview-inner">
+        <button type="button" class="close" aria-label="Close image preview">&times;</button>
+        <img id="previewImg" alt="Selected gallery preview">
+    </div>
 </div>
 
 <a href="index.html" class="back">⬅ Back to Home</a>
 
 <script>
-function show(src){
-document.getElementById("preview").style.display="flex";
-document.getElementById("previewImg").src=src;
+const preview = document.getElementById('preview');
+const previewImg = document.getElementById('previewImg');
+const galleryItems = document.querySelectorAll('.gallery-item');
+const closeBtn = document.querySelector('.close');
+
+function openPreview(src) {
+    previewImg.src = src;
+    preview.classList.add('is-open');
+    preview.setAttribute('aria-hidden', 'false');
 }
 
-function hide(){
-document.getElementById("preview").style.display="none";
+function closePreview() {
+    preview.classList.remove('is-open');
+    preview.setAttribute('aria-hidden', 'true');
 }
+
+galleryItems.forEach((item) => {
+    item.addEventListener('click', function () {
+        openPreview(item.dataset.src);
+    });
+});
+
+closeBtn.addEventListener('click', closePreview);
+preview.addEventListener('click', function (event) {
+    if (event.target === preview) closePreview();
+});
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && preview.classList.contains('is-open')) {
+        closePreview();
+    }
+});
 </script>
 
 </body>

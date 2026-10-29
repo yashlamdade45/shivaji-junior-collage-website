@@ -1,114 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>12th Board Question Bank</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Science and Arts question bank links for the 12th board exam.">
+    <title>12th Board Question Bank</title>
+    <style>
+        :root {
+            --primary: #0b3d91;
+            --primary-soft: #edf4ff;
+            --accent: #ff9800;
+            --text: #1d2a38;
+            --muted: #495d76;
+            --surface: #ffffff;
+            --border: #dfeaf7;
+            --shadow: 0 14px 32px rgba(11, 61, 145, 0.1);
+        }
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    text-align:center;
-    margin:0;
-    padding:40px;
-}
+        * { box-sizing: border-box; }
 
-h1{
-    color:#0d47a1;
-}
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #edf4ff 0%, #f7f9fc 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
-.container{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    margin-top:50px;
-    flex-wrap:wrap;
-}
+        .page-shell {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 3rem 1rem 4rem;
+        }
 
-.card{
-    width:250px;
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-.card h2{
-    color:#0d47a1;
-}
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+        }
 
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 25px;
-    background:#ff9800;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-}
+        .subtitle {
+            margin: 0.75rem 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
 
-.btn:hover{
-    background:#e68900;
-}
+        .search-wrap {
+            margin: 2rem auto 1.5rem;
+            max-width: 520px;
+        }
 
-@media (max-width:600px){
-    body{
-        padding:24px 14px;
-    }
+        .search-wrap input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
 
-    h1{
-        font-size:28px;
-        line-height:1.2;
-    }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-    .container{
-        gap:18px;
-        margin-top:28px;
-    }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 2rem 1.3rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
 
-    .card{
-        width:100%;
-        max-width:360px;
-        padding:22px 18px;
-    }
+        .card h2 {
+            margin: 0;
+            font-size: 1.7rem;
+            color: var(--primary);
+        }
 
-    .btn{
-        width:100%;
-        padding:13px 16px;
-    }
-}
-</style>
+        .card p {
+            margin: 0.7rem 0 1.3rem;
+            color: var(--muted);
+        }
 
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            background: #e68900;
+            transform: translateY(-1px);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            margin-top: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .page-shell {
+                padding-top: 2.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="page-shell">
+        <header>
+            <h1>📚 12th Board Question Bank</h1>
+            <p class="subtitle">Select your stream and explore the available subject resources.</p>
+        </header>
 
-<h1>📚 12th Board Question Bank</h1>
+        <div class="search-wrap">
+            <label for="streamSearch" class="sr-only" style="position:absolute;left:-9999px;">Search streams</label>
+            <input id="streamSearch" type="search" placeholder="Search stream or subject..." aria-label="Search streams and subjects">
+        </div>
 
-<p>Select your stream</p>
+        <main class="container" aria-label="Question bank streams">
+            <article class="card" data-search="science 12th board question bank physics chemistry biology mathematics computer science">
+                <h2>🔬 Science</h2>
+                <p>Physics, Chemistry, Biology, Mathematics and more.</p>
+                <a href="science-questionbank.html" class="btn">Open Science</a>
+            </article>
 
-<div class="container">
+            <article class="card" data-search="arts 12th board question bank history geography political science sociology economics psychology english marathi hindi">
+                <h2>🎨 Arts</h2>
+                <p>History, Geography, Sociology, Economics and other arts subjects.</p>
+                <a href="arts-questionbank.html" class="btn">Open Arts</a>
+            </article>
+        </main>
 
-<div class="card">
-<h2>🔬 Science</h2>
+        <a href="index.html" class="nav-back">⬅ Back to home</a>
+    </div>
 
-<a href="science-questionbank.html" class="btn">
-Open Science
-</a>
+    <script>
+        const searchInput = document.getElementById('streamSearch');
+        const cards = Array.from(document.querySelectorAll('.card'));
 
-</div>
-
-<div class="card">
-<h2>🎨 Arts</h2>
-
-<a href="arts-questionbank.html" class="btn">
-Open Arts
-</a>
-
-</div>
-
-</div>
-
+        searchInput.addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase();
+            cards.forEach((card) => {
+                const text = (card.dataset.search || card.textContent || '').toLowerCase();
+                const show = !query || text.includes(query);
+                card.style.display = show ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
