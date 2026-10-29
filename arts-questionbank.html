@@ -3,93 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arts subject resources and question bank links for 12th board preparation.">
 <title>12th Arts Question Bank</title>
 
 <style>
-
-body{
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    margin:0;
+:root {
+    --primary: #0b3d91;
+    --primary-soft: #edf4ff;
+    --accent: #ff9800;
+    --text: #1e2a37;
+    --muted: #53657f;
+    --surface: #ffffff;
+    --border: #dfeaf8;
+    --shadow: 0 12px 26px rgba(11,61,145,0.08);
 }
 
-header{
-    background:#0b5ed7;
-    color:white;
-    text-align:center;
-    padding:20px;
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, var(--primary-soft), #f8fbff);
+    color: var(--text);
+    margin: 0;
 }
 
-.subjects{
-    width:90%;
-    margin:30px auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+header {
+    background: linear-gradient(135deg, var(--primary), #0c2f73);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,.2);
-    text-align:center;
+header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
-.card h2{
-    color:#0b5ed7;
+header p {
+    margin: 0.6rem 0 0;
+    opacity: 0.95;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:15px;
-    padding:10px 20px;
-    background:#ff9800;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
+.page-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem 3rem;
 }
 
-.btn:hover{
-    background:#e68900;
+.search-wrap {
+    max-width: 520px;
+    margin: 0 auto 1.5rem;
 }
 
-.back{
-    display:inline-block;
-    margin:30px;
-    text-decoration:none;
-    font-weight:bold;
-    color:#0b5ed7;
+.search-wrap input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.subjects {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 1.4rem 1rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.card p {
+    margin: 0.5rem 0 1rem;
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover, .btn:focus-visible {
+    background: #e68900;
+    transform: translateY(-1px);
+}
+
+.back-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.back-links a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
 }
 
 @media (max-width:600px){
-    header{
-        padding:22px 14px;
-    }
-
-    header h1{
-        font-size:28px;
-        line-height:1.2;
-    }
-
-    .subjects{
-        width:auto;
-        margin:20px 12px;
-        grid-template-columns:1fr;
-        gap:14px;
-    }
-
-    .card{
-        padding:18px 16px;
-    }
-
-    .btn{
-        width:100%;
-        padding:13px 16px;
-    }
+    header { padding: 1.7rem 1rem; }
+    .page-shell { padding-top: 1.5rem; }
+    .btn { width: 100%; }
 }
-
 </style>
 
 </head>
@@ -97,66 +137,89 @@ header{
 <body>
 
 <header>
-
 <h1>🎨 12th Arts Question Bank</h1>
-
-<p>Select Your Subject</p>
-
+<p>Select a subject for board preparation material.</p>
 </header>
 
-<div class="subjects">
+<div class="page-shell">
+    <div class="search-wrap">
+        <label for="subjectSearch" class="sr-only" style="position:absolute;left:-9999px;">Search arts subjects</label>
+        <input id="subjectSearch" type="search" placeholder="Search subject name..." aria-label="Search arts subjects">
+    </div>
 
-<div class="card">
-<h2>English</h2>
-<p>Shared English question bank</p>
-<a href="english.html" class="btn">Open</a>
+    <main class="subjects" aria-label="Arts subjects">
+        <article class="card" data-search="english language board exam question paper">
+            <h2>English</h2>
+            <p>Shared English support.</p>
+            <a href="english.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="marathi language board exam question paper">
+            <h2>Marathi</h2>
+            <p>Marathi practice and study material.</p>
+            <a href="marathi.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="hindi language board exam question paper">
+            <h2>Hindi</h2>
+            <p>Hindi practice and study material.</p>
+            <a href="hindi.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="history arts board exam question paper">
+            <h2>History</h2>
+            <p>Practice notes and revision support.</p>
+            <a href="history.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="geography arts board exam question paper">
+            <h2>Geography</h2>
+            <p>Practice and revision material.</p>
+            <a href="geography.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="political science arts board exam question paper">
+            <h2>Political Science</h2>
+            <p>Practice material and revision support.</p>
+            <a href="political-science.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="sociology arts board exam question paper">
+            <h2>Sociology</h2>
+            <p>Practice material and revision support.</p>
+            <a href="sociology-arts.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="economics arts board exam question paper">
+            <h2>Economics</h2>
+            <p>Economics practice and revision material.</p>
+            <a href="economics.html" class="btn">Open</a>
+        </article>
+
+        <article class="card" data-search="psychology arts board exam question paper">
+            <h2>Psychology</h2>
+            <p>Practice and revision support.</p>
+            <a href="psychology.html" class="btn">Open</a>
+        </article>
+    </main>
+
+    <div class="back-links">
+        <a href="question-bank.html">⬅ Back to streams</a>
+        <a href="index.html">Home</a>
+    </div>
 </div>
 
-<div class="card">
-<h2>Marathi</h2>
-<a href="marathi.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>Hindi</h2>
-<a href="hindi.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>🏛 History</h2>
-<a href="history.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>🌍 Geography</h2>
-<a href="geography.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>🏛 Political Science</h2>
-<a href="political-science.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>Sociology</h2>
-<a href="sociology-arts.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>📈 Economics</h2>
-<a href="economics.html" class="btn">Open</a>
-</div>
-
-<div class="card">
-<h2>Psychology</h2>
-<a href="psychology.html" class="btn">Open</a>
-</div>
-
-</div>
-
-<a href="question-bank.html" class="back">
-⬅ Back to Streams
-</a>
+<script>
+const searchInput = document.getElementById('subjectSearch');
+const cards = Array.from(document.querySelectorAll('.card'));
+searchInput.addEventListener('input', function () {
+    const query = this.value.trim().toLowerCase();
+    cards.forEach((card) => {
+        const text = (card.dataset.search || card.textContent || '').toLowerCase();
+        card.style.display = (!query || text.includes(query)) ? '' : 'none';
+    });
+});
+</script>
 
 </body>
 </html>
